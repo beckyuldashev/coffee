@@ -38,7 +38,17 @@ navLinks.forEach(elem => elem.addEventListener('click', linkAction));
 
 
 /*=============== CHANGE BACKGROUND HEADER ===============*/
+function scrollHeader() {
+  const header = getElement('#header');
 
+  if(this.scrollY >= 50) {
+    header.classList.add('scroll-header');
+  } else {
+    header.classList.remove('scroll-header');
+  }
+}
+
+window.addEventListener('scroll', scrollHeader);
 
 /*=============== MIXITUP FILTER PRODUCTS ===============*/
 
