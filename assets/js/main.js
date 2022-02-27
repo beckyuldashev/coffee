@@ -77,3 +77,8 @@ linkProducts.forEach(elem => elem.addEventListener('click', activeProducts));
 
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+
+// Get current year
+const date = getElement('#currentYear');
+const currentYear = new Date().getFullYear();
+date.textContent = currentYear;
