@@ -73,12 +73,43 @@ function activeProducts () {
 
 linkProducts.forEach(elem => elem.addEventListener('click', activeProducts));
 
-/*=============== SHOW SCROLL UP ===============*/ 
 
-
-/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
-
-// Get current year
+/*=============== GET CURRENT YEAR ===============*/ 
 const date = getElement('#currentYear');
 const currentYear = new Date().getFullYear();
 date.textContent = currentYear;
+
+
+/*=============== SHOW SCROLL UP ===============*/ 
+function scrollUp() {
+  const scrollup = getElement('#scroll-up');
+
+  if(this.scrollY >= 350) {
+    scrollup.classList.add('show-scroll');
+  } else {
+    scrollup.classList.remove('show-scroll');
+  }
+}
+
+window.addEventListener('scroll', scrollUp);
+
+/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+const sections = document.querySelectorAll('section[id]');
+
+const scrollActive = () => {
+  const scrollY = window.scrollY;
+
+  sections.forEach(element => {
+    const sectionHeight = element.offsetHeight;
+    const sectionTop = element.offsetTop - 56;
+    const sectionId = element.getAttribute('id');
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document.querySelector('.nav__menu a[href*=' + sectionId +']').classList.add('active-link');
+    } else {
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link');
+    }
+  });
+}
+
+window.addEventListener('scroll', scrollActive);
