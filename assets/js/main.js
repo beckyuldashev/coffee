@@ -1,5 +1,11 @@
 /*=============== LOADER ===============*/
+onload = () => {
+  const load = getElement('#load');
 
+  setTimeout(() => {
+    load.style.display = 'none';
+  }, 1500);
+};
 
 /*=============== SHOW MENU ===============*/
 const getElement = (selector) => {
